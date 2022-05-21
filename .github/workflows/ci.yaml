@@ -38,6 +38,8 @@ jobs:
 
       - name: convert notebooks and word docs to posts
         uses: ./_action_files
+          BOOL_SAVE_MARKDOWN: true
+          SSH_DEPLOY_KEY: ${{ secrets.SSH_DEPLOY_KEY}}
 
       - name: setup directories for Jekyll build
         run: |
@@ -62,8 +64,3 @@ jobs:
         with:
           deploy_key: ${{ secrets.SSH_DEPLOY_KEY }}
           publish_dir: ./_site
-    - name: convert notebooks and word docs to posts
-      uses: ./_action_files
-      with:
-          BOOL_SAVE_MARKDOWN: true
-          SSH_DEPLOY_KEY: ${{ secrets.SSH_DEPLOY_KEY}}
